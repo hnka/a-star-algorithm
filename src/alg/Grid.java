@@ -39,9 +39,13 @@ public class Grid {
 	}
 	
 	public float getCost(Player player, int originX, int originY, int destinationX, int destinationY) {
-		
-		//implement
-		return 0;
+		float cost = 0;
+		if((originX == destinationX) || (originY == destinationY)){
+			cost = 1;
+		} else {
+			cost = (float) 1.4;
+		}
+		return cost;
 		
 	}
 	
