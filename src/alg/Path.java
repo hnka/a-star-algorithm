@@ -4,39 +4,36 @@ import java.util.ArrayList;
 
 public class Path {
 	
-	//for now there is no need for a specific class 
-	//for the steps on path
-	
-	private ArrayList<Block> blocks;
+	private ArrayList<Step> steps;
 	
 	public Path() {
 		
-		this.blocks = new ArrayList<Block>();
+		this.steps = new ArrayList<Step>();
 		
 	}
 	
 	public int getLenght() {
 		
-		return this.blocks.size();	
+		return this.steps.size();	
 		
 	}
 	
-	public Block getBlockFromPath(int index) {
+	public Step getStepFromPath(int index) {
 		
-		Block block = this.blocks.get(index);
-		return block;
+		Step step = this.steps.get(index);
+		return step;
 		
 	}
 	
-	public void appendBlockToPath(Block block) {
+	public void appendStepToPath(Step step) {
 		
-		this.blocks.add(block);
+		this.steps.add(step);
 	
 	}
 	
-	public boolean pathContainsBlock(Block block) {
+	public boolean pathContainsStep(Step step) {
 		
-		return this.blocks.contains(block);
+		return this.steps.contains(step);
 		
 	}
 
