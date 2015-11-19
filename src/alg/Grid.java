@@ -2,5 +2,47 @@ package alg;
 
 public class Grid {
 	
+	public int width;
+	public int height;
 
+	public Grid(int width, int height) {
+		
+		this.width = width;
+		this.height = height;
+		
+	}
+	
+	public int getGridWidth() {
+		
+		return this.width;
+		
+	}
+	
+	public int getGridHeight() {
+		
+		return this.height;
+		
+	}
+	
+	public void visitedBlock(int x, int y) {
+		
+		//implement
+		
+	}
+	
+	public boolean wayBlocked(Player player, int x, int y) {
+		
+		//implement
+		
+		return false;
+		
+	}
+	
+	public float getCost(Player player, int originX, int originY, int destinationX, int destinationY) {
+		
+		//implement
+		return 0;
+		
+	}
+	
 }
