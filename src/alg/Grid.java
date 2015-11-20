@@ -24,20 +24,6 @@ public class Grid {
 		
 	}
 	
-	public void visitedBlock(int x, int y) {
-		
-		//implement
-		
-	}
-	
-	public boolean wayBlocked(Player player, int x, int y) {
-		
-		//implement
-		
-		return false;
-		
-	}
-	
 	public float getCost(Player player, int originX, int originY, int destinationX, int destinationY) {
 		float cost = 0;
 		if((originX == destinationX) || (originY == destinationY)){
