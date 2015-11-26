@@ -9,16 +9,10 @@ public class Block implements Comparable{
 	private float heuristic;
 	private int depth;
 	
-	private boolean isBlocker;
-	private boolean isVisited;
-	
 	public Block(int x, int y) {
 		
 		this.xCoordinate = x;
 		this.yCoordinate = y;
-		
-		this.isBlocker = false;
-		this.isVisited = false;
 		
 	}
 	
@@ -66,27 +60,9 @@ public class Block implements Comparable{
 		
 	}
 	
-	public void visitedBlock() {
+	public void setCost(int cost) {
 		
-		this.isVisited = true;
-		
-	}
-	
-	public boolean isVisited() {
-		
-		return this.isVisited;
-		
-	}
-	
-	public void setBlockBlocker() {
-		
-		this.isBlocker = true;
-		
-	}
-	
-	public boolean isBlocker() {
-		
-		return this.isBlocker;
+		this.wCost = cost;
 		
 	}
 

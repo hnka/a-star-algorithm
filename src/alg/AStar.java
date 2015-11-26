@@ -42,8 +42,7 @@ public class AStar {
 		
 		if((invalid == false) && ((originX != destinationX) || (originY != destinationY))) {
 			
-			Block block = this.blocks[destinationX][destinationY];
-			invalid = block.isBlocker();
+			invalid = this.grid.blocked(destinationX, destinationY);
 
 		}
 		
@@ -53,7 +52,31 @@ public class AStar {
 	
 	public Path findAPath(Player player, int startX, int startY, int targetX, int targetY) {
 		
-		//implement me!
+		if(this.grid.blocked(targetX, targetY)) {
+			
+			return null;
+			
+		}
+		
+		this.blocks[startX][startY].setCost(0);
+		this.frontier.clear();
+		this.searched.clear();
+		
+		this.frontier.add(this.blocks[startX][startY]);
+		this.blocks[startX][startY].setParent(null);
+		
+		while(this.frontier.size() != 0) {
+			
+			Block current = this.frontier.first();
+			if(current == this.blocks[startX][startY]) {
+				
+				break;
+			}
+			
+			this.frontier.remove(current);
+			this.searched.add(current);
+			
+		}
 		
 		Path path = new Path();
 		

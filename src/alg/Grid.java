@@ -2,14 +2,37 @@ package alg;
 
 public class Grid {
 	
-	public int width;
-	public int height;
+	private int width;
+	private int height;
+	
+	private boolean[][] blockers;
+	private boolean[][] visited;
 
 	public Grid(int width, int height) {
 		
 		this.width = width;
 		this.height = height;
 		
+	}
+	
+	public void fillBlockers(int x, int y) {
+		
+		this.blockers[x][y] = true;
+		
+	}
+	
+	public void clearVisited() {
+		
+		for(int x=0; x<this.getGridWidth(); x++) {
+			
+			for(int y=0; y<this.getGridHeight(); y++){
+				
+				this.visited[x][y] = false;
+				
+			}
+			
+		}
+
 	}
 	
 	public int getGridWidth() {
@@ -32,6 +55,20 @@ public class Grid {
 			cost = (float) 1.4;
 		}
 		return cost;
+		
+	}
+	
+	public boolean blocked(int x, int y) {
+		
+		if(this.blockers[x][y] == true) {
+			
+			return true;
+			
+		} else {
+			
+			return false;
+			
+		}
 		
 	}
 	
