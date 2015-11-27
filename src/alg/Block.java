@@ -4,10 +4,9 @@ public class Block implements Comparable{
 	
 	private int xCoordinate;
 	private int yCoordinate;
-	private int wCost;
+	private float wCost;
 	private Block parent;
 	private float heuristic;
-	private int depth;
 	
 	public Block(int x, int y) {
 		
@@ -17,22 +16,20 @@ public class Block implements Comparable{
 	}
 	
 	public void setParent(Block parentBlock) {
-		
+			
 		this.parent = parentBlock;
-		this.setDepth(parentBlock);
+	
+	}
+	
+	public int getX() {
+		
+		return this.xCoordinate;
 		
 	}
 	
-	private void setDepth(Block parentBlock) {
+	public int getY() {
 		
-		//depth is set using the parent
-		this.depth = parentBlock.depth + 1;
-		
-	}
-	
-	public int getDepth() {
-		
-		return this.depth;
+		return this.yCoordinate;
 		
 	}
 
@@ -60,9 +57,27 @@ public class Block implements Comparable{
 		
 	}
 	
-	public void setCost(int cost) {
+	public void setCost(float cost) {
 		
 		this.wCost = cost;
+		
+	}
+	
+	public float getCost() {
+		
+		return this.wCost;
+		
+	}
+	
+	public void setHeuristic(float heuristic) {
+		
+		this.heuristic = heuristic;
+		
+	}
+	
+	public Block getParent() {
+		
+		return this.parent;
 		
 	}
 

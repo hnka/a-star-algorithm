@@ -13,6 +13,9 @@ public class Grid {
 		this.width = width;
 		this.height = height;
 		
+		this.blockers = new boolean[width][height];
+		this.visited = new boolean[width][height];
+		
 	}
 	
 	public void fillBlockers(int x, int y) {
@@ -47,7 +50,7 @@ public class Grid {
 		
 	}
 	
-	public float getCost(Player player, int originX, int originY, int destinationX, int destinationY) {
+	public float getCost(int originX, int originY, int destinationX, int destinationY) {
 		float cost = 0;
 		if((originX == destinationX) || (originY == destinationY)){
 			cost = 1;
@@ -69,6 +72,12 @@ public class Grid {
 			return false;
 			
 		}
+		
+	}
+	
+	public void wereVisited(int x, int y) {
+		
+		this.visited[x][y] = true;
 		
 	}
 	

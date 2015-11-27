@@ -36,5 +36,17 @@ public class Path {
 		return this.steps.contains(step);
 		
 	}
+	
+	public void prependStepToPath(Step step) {
+		
+		this.steps.add(0, step);
+		
+	}
+	
+	public ArrayList<Step> getSteps() {
+		
+		return this.steps;
+		
+	}
 
 }
