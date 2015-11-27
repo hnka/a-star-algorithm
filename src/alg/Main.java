@@ -10,7 +10,9 @@ public class Main {
 		Grid map = new Grid(10,10);
 		AStar a = new AStar(map);
 		
-		//map.fillBlockers(4,4);
+		map.fillBlockers(4,4);
+		
+		map.fillBlockers(6, 6);
 		
 		Player one = new Player("Ceci");
 		
