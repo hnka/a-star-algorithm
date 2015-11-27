@@ -7,12 +7,15 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Grid map = new Grid(10,10);
+		//grid weight 0: uniform cost search
+		//grid weight 1: A*
+		//grid weight 2: greedy best search
+		
+		Grid map = new Grid(10,10,1);
 		AStar a = new AStar(map);
 		
-		map.fillBlockers(4,4);
-		
-		map.fillBlockers(6, 6);
+		map.fillBlockers(4,4);	
+		map.fillBlockers(6,6);
 		
 		Player one = new Player("Ceci");
 		
@@ -29,8 +32,9 @@ public class Main {
 		for(int i=0; i<steps.size(); i++) {
 			
 			Step s = steps.get(i);
-			System.out.println("Step "+i+" : x ="+s.getXCoordinate());
-			System.out.println("Step "+i+" : y ="+s.getYCoordinate());
+			System.out.println("Step "+i+": x = "+s.getXCoordinate());
+			System.out.println("Step "+i+": y = "+s.getYCoordinate());
+			System.out.println();
 			
 		}
 

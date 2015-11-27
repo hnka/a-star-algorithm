@@ -5,16 +5,26 @@ public class Grid {
 	private int width;
 	private int height;
 	
+	private int weight;
+	
 	private boolean[][] blockers;
 	private boolean[][] visited;
 
-	public Grid(int width, int height) {
+	public Grid(int width, int height, int weight) {
 		
 		this.width = width;
 		this.height = height;
 		
+		this.weight = weight;
+		
 		this.blockers = new boolean[width][height];
 		this.visited = new boolean[width][height];
+		
+	}
+	
+	public int getWeight() {
+		
+		return this.weight;
 		
 	}
 	

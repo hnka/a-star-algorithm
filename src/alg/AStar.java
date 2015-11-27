@@ -94,7 +94,7 @@ public class AStar {
 					
 					if(this.isLocationValid(startX, startY, xPath, yPath)) {
 						
-						float nextStepCost = current.getCost() + this.grid.getCost(current.getX(), current.getY(), xPath, yPath);
+						float nextStepCost = (2 - this.grid.getWeight())*(current.getCost()) + (this.grid.getWeight())*(this.grid.getCost(current.getX(), current.getY(), xPath, yPath));
 						Block neighbour = this.blocks[xPath][yPath];
 						this.grid.wereVisited(xPath, yPath);
 						
