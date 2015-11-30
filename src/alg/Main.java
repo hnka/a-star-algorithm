@@ -12,6 +12,13 @@ public class Main {
 		//grid weight 2: greedy best search
 		
 		Grid map = new Grid(10,10,2);
+		
+		map.fillBlockers(4,4);	
+		map.fillBlockers(6,6);
+		new GUI(map);
+		
+		/*
+		Grid map = new Grid(10,10,2);
 		AStar a = new AStar(map);
 		
 		map.fillBlockers(4,4);	
@@ -62,7 +69,7 @@ public class Main {
 			
 			System.out.println("");
 			
-		}
+		}*/
 		
 
 	}

@@ -1,6 +1,8 @@
 package alg;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,6 +26,17 @@ public class GUI {
 			for(int j = 0; j<this.map.getGridHeight(); j++) {
 				
 				this.buttonGrid[i][j] = new JButton("("+i+","+j+")");
+				this.buttonGrid[i][j].addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						System.out.println(e.getActionCommand());
+						
+					}
+					
+				});
+				this.frame.add(this.buttonGrid[i][j]);
 				
 			}
 			
@@ -32,16 +45,6 @@ public class GUI {
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frame.pack();
 		this.frame.setVisible(true);		
-		
-	}
-	
-	public static void main(String[] args) {
-		
-		Grid map = new Grid(10,10,2);
-		
-		map.fillBlockers(4,4);	
-		map.fillBlockers(6,6);
-		new GUI(map);
 		
 	}
 
