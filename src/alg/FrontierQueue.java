@@ -49,5 +49,11 @@ public class FrontierQueue {
 		return this.frontier.contains(block);
 		
 	}
+	
+	public Block getFrontierBlockForIndex(int index) {
+		
+		return this.frontier.get(index);
+		
+	}
 
 }

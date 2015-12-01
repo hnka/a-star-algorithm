@@ -12,6 +12,8 @@ public class AStar {
 	private ArrayList searched;
 	private FrontierQueue frontier;
 	
+	private FrontierQueue guiFrontier;
+	
 	public AStar(Grid grid) {
 		
 		this.grid = grid;
@@ -19,6 +21,8 @@ public class AStar {
 		
 		this.searched = new ArrayList();
 		this.frontier = new FrontierQueue();
+		
+		this.guiFrontier = new FrontierQueue();
 		
 		//init blocks
 		this.blocks = new Block[grid.getGridWidth()][grid.getGridHeight()];
@@ -60,9 +64,11 @@ public class AStar {
 		//cleaning variables
 		this.blocks[startX][startY].setCost(0);
 		this.frontier.clear();
+		this.guiFrontier.clear();
 		this.searched.clear();
 		
 		this.frontier.add(this.blocks[startX][startY]);
+		this.guiFrontier.add(this.blocks[startX][startY]);
 		
 		this.blocks[startX][startY].setParent(null);
 		
@@ -95,6 +101,8 @@ public class AStar {
 					if(this.isLocationValid(startX, startY, xPath, yPath)) {
 						
 						float nextStepCost = (2 - this.grid.getWeight())*(current.getCost()) + (this.grid.getWeight())*(this.grid.getCost(current.getX(), current.getY(), xPath, yPath));
+						//float nextStepCost = current.getCost() + this.grid.getCost(current.getX(), current.getY(), xPath, yPath);
+						
 						Block neighbour = this.blocks[xPath][yPath];
 						this.grid.wereVisited(xPath, yPath);
 						
@@ -103,6 +111,7 @@ public class AStar {
 							if(this.frontier.contains(neighbour)) {
 								
 								this.frontier.remove(neighbour);
+								this.guiFrontier.remove(neighbour);
 								
 							}
 							
@@ -120,6 +129,7 @@ public class AStar {
 							neighbour.setHeuristic(this.heuristic.getCost(startX, startY, targetX, targetY));
 							neighbour.setParent(current);
 							this.frontier.add(neighbour);
+							this.guiFrontier.add(neighbour);
 							
 						}
 						
@@ -150,6 +160,12 @@ public class AStar {
 		path.prependStepToPath(new Step(startX, startY));
 		
 		return path;
+		
+	}
+	
+	public FrontierQueue getGuiFrontier() {
+		
+		return this.guiFrontier;
 		
 	}
 

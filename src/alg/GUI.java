@@ -25,7 +25,10 @@ public class GUI {
 
 	private Color basic;
 
-	ArrayList<Step> steps;
+	private ArrayList<Step> steps;
+	private FrontierQueue gui;
+	
+	private AStar a;
 
 	public GUI(Grid map) {
 
@@ -39,6 +42,7 @@ public class GUI {
 		this.targetY = 0;
 
 		this.steps = new ArrayList<Step>();
+		this.gui = new FrontierQueue();
 
 		JButton buttonBasic = new JButton();
 		this.basic = buttonBasic.getBackground();
@@ -96,6 +100,14 @@ public class GUI {
 				this.buttonGrid[s.getXCoordinate()][s.getYCoordinate()].setBackground(this.basic);
 
 			}
+			
+			/*
+			for(int j=0; j<this.gui.size(); j++) {
+
+				Block b = this.gui.getFrontierBlockForIndex(j);
+				this.buttonGrid[b.getX()][b.getY()].setBackground(this.basic);
+
+			}*/
 
 			String value = e.getActionCommand();
 			String valueX = value.substring(0,1);
@@ -130,10 +142,10 @@ public class GUI {
 
 	public void findPath() {
 
-		AStar a = new AStar(this.map);
+		this.a = new AStar(this.map);
 		Player one = new Player("Ceci");
 
-		Path path = a.findAPath(one, this.initialX, this.initialY, this.targetX, this.targetY);
+		Path path = this.a.findAPath(one, this.initialX, this.initialY, this.targetX, this.targetY);
 
 		if(path == null) {
 
@@ -143,13 +155,30 @@ public class GUI {
 			
 			this.steps = path.getSteps();
 
-			for(int i=0; i<this.steps.size(); i++) {
+			for(int i=1; i<this.steps.size()-1; i++) {
 
 				Step s = this.steps.get(i);
 				this.buttonGrid[s.getXCoordinate()][s.getYCoordinate()].setBackground(Color.black);
 				this.buttonGrid[s.getXCoordinate()][s.getYCoordinate()].setOpaque(true);
 				
 			}
+			
+			/*
+			this.gui = this.a.getGuiFrontier();
+			
+			for(int j=0; j<this.gui.size(); j++) {
+				
+				Block b = this.gui.getFrontierBlockForIndex(j);
+				
+				Color c = this.buttonGrid[b.getX()][b.getY()].getBackground();
+				
+				if(c == this.basic) {
+					
+					this.buttonGrid[b.getX()][b.getY()].setBackground(Color.orange);
+					
+				}
+
+			}*/
 			
 		}
 	}
