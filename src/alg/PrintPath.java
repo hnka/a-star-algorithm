@@ -14,9 +14,9 @@ public class PrintPath {
 		System.out.println("I: posição inicial\n"
 				+ "F: posição final\n"
 				+ "X: obstáculo\n"
-				+ "V: visitado\n"
+				+ "o: visitado\n"
 				+ "-: caminho");
-		
+
 		Grid map = new Grid(10,10,1);
 		AStar a = new AStar(map);
 
@@ -29,7 +29,7 @@ public class PrintPath {
 		map.fillBlockers(2,3);
 		map.fillBlockers(3,9);
 		map.fillBlockers(8,8);
-		
+
 		int originX = 0;
 		int originY = 1;
 		int targetX = 9;
@@ -43,46 +43,46 @@ public class PrintPath {
 
 			System.out.println("Path null");
 
-		}
+		} else {
 
-		ArrayList<Step> steps = path.getSteps();
+			ArrayList<Step> steps = path.getSteps();
 
-		String[][] gridRep = new String[map.getGridWidth()][map.getGridHeight()];
-		System.out.println();
+			String[][] gridRep = new String[map.getGridWidth()][map.getGridHeight()];
+			System.out.println();
 
-		for(int j = 0; j<map.getGridWidth(); j++) {	
-			for(int k = 0; k<map.getGridHeight(); k++) {
-				if(map.isVisited(j, k)){
-					gridRep[j][k] = "v";
-				} else if(map.blocked(j, k)){
-					gridRep[j][k] = "X";
-				} else {
-					gridRep[j][k] = "0";
+			for(int j = 0; j<map.getGridWidth(); j++) {	
+				for(int k = 0; k<map.getGridHeight(); k++) {
+					if(map.isVisited(j, k)){
+						gridRep[j][k] = "o";
+					} else if(map.blocked(j, k)){
+						gridRep[j][k] = "X";
+					} else {
+						gridRep[j][k] = "0";
+					}
 				}
+
 			}
 
-		}
-		
-		for(int i=0; i<steps.size(); i++) {
-			Step s = steps.get(i);
-			//System.out.println("Step "+i+": x = "+s.getXCoordinate());
-			//System.out.println("Step "+i+": y = "+s.getYCoordinate());
-			//System.out.println();
-			gridRep[s.getXCoordinate()][s.getYCoordinate()] = "-";
+			for(int i=0; i<steps.size(); i++) {
+				Step s = steps.get(i);
+				//System.out.println("Step "+i+": x = "+s.getXCoordinate());
+				//System.out.println("Step "+i+": y = "+s.getYCoordinate());
+				//System.out.println();
+				gridRep[s.getXCoordinate()][s.getYCoordinate()] = "-";
 
-		}
-		
-		gridRep[originX][originY] = "I";
-		gridRep[targetX][targetY] = "F";
-		
-		for(int j =0; j<map.getGridWidth(); j++) {	
-			for(int k =0; k<map.getGridHeight(); k++) {
-				System.out.print(gridRep[j][k] + " ");
 			}
-			System.out.println("");
 
+			gridRep[originX][originY] = "I";
+			gridRep[targetX][targetY] = "F";
+
+			for(int j =0; j<map.getGridWidth(); j++) {	
+				for(int k =0; k<map.getGridHeight(); k++) {
+					System.out.print(gridRep[j][k] + " ");
+				}
+				System.out.println("");
+			}
+
+			System.out.println();
 		}
-
-		System.out.println();
 	}
 }
