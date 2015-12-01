@@ -85,6 +85,12 @@ public class Grid {
 		
 	}
 	
+	public boolean isVisited(int x, int y){
+		
+		return this.visited[x][y];
+		
+	}
+	
 	public void wereVisited(int x, int y) {
 		
 		this.visited[x][y] = true;
